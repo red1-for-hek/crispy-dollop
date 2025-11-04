@@ -4,6 +4,14 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Background gradient colors
+        'bg-start': '#06070a',
+        'bg-end': '#0f1020',
+        // Neon accent colors
+        'neon-purple': '#8B5CF6',
+        'neon-cyan': '#00D4FF',
+        'neon-green': '#00FF88',
+        'neon-blue': '#0066CC',
         primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',
@@ -91,8 +99,10 @@ export default {
         }
       },
       fontFamily: {
-        'sans': ['Inter', 'system-ui', 'sans-serif'],
-        'mono': ['JetBrains Mono', 'Consolas', 'monospace'],
+        'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+        'heading': ['Inter', 'system-ui', 'sans-serif'],
+        'body': ['Inter', 'system-ui', 'sans-serif'],
+        'mono': ['Roboto Mono', 'Consolas', 'Monaco', 'Courier New', 'monospace'],
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',
@@ -193,5 +203,51 @@ export default {
       }
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      const neonUtilities = {
+        '.neon-glow': {
+          textShadow: '0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor, 0 0 40px currentColor',
+          filter: 'drop-shadow(0 0 10px currentColor) drop-shadow(0 0 20px currentColor)',
+        },
+        '.neon-glow-purple': {
+          textShadow: '0 0 10px #8B5CF6, 0 0 20px #8B5CF6, 0 0 30px #8B5CF6, 0 0 40px #8B5CF6',
+          filter: 'drop-shadow(0 0 10px #8B5CF6) drop-shadow(0 0 20px #8B5CF6)',
+        },
+        '.neon-glow-cyan': {
+          textShadow: '0 0 10px #00D4FF, 0 0 20px #00D4FF, 0 0 30px #00D4FF, 0 0 40px #00D4FF',
+          filter: 'drop-shadow(0 0 10px #00D4FF) drop-shadow(0 0 20px #00D4FF)',
+        },
+        '.neon-glow-green': {
+          textShadow: '0 0 10px #00FF88, 0 0 20px #00FF88, 0 0 30px #00FF88, 0 0 40px #00FF88',
+          filter: 'drop-shadow(0 0 10px #00FF88) drop-shadow(0 0 20px #00FF88)',
+        },
+        '.neon-glow-blue': {
+          textShadow: '0 0 10px #0066CC, 0 0 20px #0066CC, 0 0 30px #0066CC, 0 0 40px #0066CC',
+          filter: 'drop-shadow(0 0 10px #0066CC) drop-shadow(0 0 20px #0066CC)',
+        },
+        '.neon-border': {
+          border: '1px solid currentColor',
+          boxShadow: '0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor, inset 0 0 5px currentColor',
+        },
+        '.neon-border-purple': {
+          border: '1px solid #8B5CF6',
+          boxShadow: '0 0 5px #8B5CF6, 0 0 10px #8B5CF6, 0 0 15px #8B5CF6, inset 0 0 5px #8B5CF6',
+        },
+        '.neon-border-cyan': {
+          border: '1px solid #00D4FF',
+          boxShadow: '0 0 5px #00D4FF, 0 0 10px #00D4FF, 0 0 15px #00D4FF, inset 0 0 5px #00D4FF',
+        },
+        '.neon-border-green': {
+          border: '1px solid #00FF88',
+          boxShadow: '0 0 5px #00FF88, 0 0 10px #00FF88, 0 0 15px #00FF88, inset 0 0 5px #00FF88',
+        },
+        '.neon-border-blue': {
+          border: '1px solid #0066CC',
+          boxShadow: '0 0 5px #0066CC, 0 0 10px #0066CC, 0 0 15px #0066CC, inset 0 0 5px #0066CC',
+        },
+      };
+      addUtilities(neonUtilities);
+    },
+  ],
 }
